@@ -12,8 +12,8 @@ CREATE TABLE `books` (
     `book_genre` varchar(255) NOT NULL,
     `book_user` varchar(255) NOT NULL,
     `book_location` varchar(255) NOT NULL,
-    `book_buyprice` varchar(255) NOT NULL,
-    `book_rentprice` varchar(255) NOT NULL,
+    `book_buyprice` INT(255) NOT NULL,
+    `book_rentprice` INT(255) NOT NULL,
     `book_image` varchar(255) NOT NULL,
     `book_rentdue` varchar(255) NOT NULL,
     `book_rentduration` varchar(255) NOT NULL,
@@ -34,8 +34,8 @@ VALUES
     "Academic",
     "Anton Magbanua",
     "City of Kabankalan",
-    "320.00",
-    "50",
+    320,
+    50,
     "https://raw.githubusercontent.com/RJSeebs02/LibrooImages/main/img4.jpg",
     "week",
     "2 months",
@@ -48,8 +48,8 @@ VALUES
     "Academic",
     "Argian Cortez",
     "Talisay City",
-    "350.00",
-    "50",
+    350,
+    50,
     "https://raw.githubusercontent.com/RJSeebs02/LibrooImages/main/img3.jpg",
     "week",
     "2 months",
@@ -62,8 +62,8 @@ VALUES
     "Academic",
     "Russ Allen Garde",
     "Bacolod City",
-    "300.00",
-    "50",
+    300.00,
+    50,
     "https://raw.githubusercontent.com/RJSeebs02/LibrooImages/main/img2.jpg",
     "week",
     "2 months",
@@ -76,12 +76,29 @@ VALUES
     "Academic",
     "Romeo Seva III",
     "Silay City",
-    "350.00",
-    "50",
+    350.00,
+    50,
     "https://raw.githubusercontent.com/RJSeebs02/LibrooImages/main/img1.png",
     "week",
     "2 months",
     "Sample Desc",
     "https://raw.githubusercontent.com/RJSeebs02/LibrooImages/main/Romeo.jpg",
     "Slightly Used"
+);
+
+DROP TABLE IF EXISTS `carting`;
+CREATE TABLE `carting` (
+    `cart_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT(10) NOT NULL,
+    `cart_price` INT(255) NOT NULL
+);
+
+DROP TABLE IF EXISTS `carting_item`;
+CREATE TABLE `carting_item` (
+    `carting_item_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `cart_id` INT(10) NOT NULL,
+    `book_id` INT(10) NOT NULL,
+    `product_quantity` INT(255) NOT NULL,
+    KEY (`cart_id`),
+    KEY (`book_id`)
 );
